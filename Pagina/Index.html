@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controlador de Hábitos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app-container">
+        <button id="theme-toggle" class="btn-tema">🌙</button>
+
+        <header class="app-header">
+            <h1>Habit Tracker</h1>
+            <p id="fecha-actual">Hoy</p>
+        </header>
+
+        <!-- Formulario para agregar -->
+        <form id="form-habito" class="habito-form">
+            <input type="text" id="input-habito" placeholder="Escribe un nuevo hábito..." required>
+            <button type="submit">+ Agregar</button>
+        </form>
+
+        <!-- Contenedor de la lista -->
+        <section class="lista-habitos" id="lista-habitos">
+
+            <!-- Tarjeta de ejemplo para maquetar estilos -->
+            <article class="tarjeta-habito">
+                <div class="habito-principal">
+                    <input type="checkbox" class="check-habito">
+                    <span class="nombre-habito">Leer 15 páginas</span>
+                    <span class="racha-habito">🔥 3 días</span>
+                    <button class="btn-eliminar">&times;</button>
+                </div>
+
+                <div class="dias-semana">
+                    <span class="dia completado">L</span>
+                    <span class="dia completado">M</span>
+                    <span class="dia completado">X</span>
+                    <span class="dia">J</span>
+                    <span class="dia">V</span>
+                    <span class="dia">S</span>
+                    <span class="dia">D</span>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Resumen/Progreso -->
+        <footer class="app-footer">
+            <p>Progreso de hoy: <span id="porcentaje">0%</span></p>
+        </footer>
+    </main>
+
+    <script src="Script.js"></script>
+</body>
+
+</html>
