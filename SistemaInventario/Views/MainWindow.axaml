@@ -1,0 +1,101 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
+        x:Class="SistemaInventario.Views.MainWindow"
+        Title="Sistema de Inventario y Combustible"
+        Width="850" Height="550"
+        Background="#1e1e1e" Foreground="White">
+
+        <Window.Styles>
+            <Style Selector="TabItem">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+
+            <Style Selector="TabItem:selected">
+                <Setter Property="Foreground" Value="#ffffff"/>
+            </Style>
+        </Window.Styles>
+
+    <TabControl Margin="10">
+        
+        <!-- PESTAÑA 1: INVENTARIO DE PIEZAS -->
+        <TabItem Header="Inventario de Piezas">
+            <Grid ColumnDefinitions="300, *" RowDefinitions="*" Margin="10">
+                
+                <!-- Panel izquierdo: Formulario de Registro -->
+                <StackPanel Grid.Column="0" Spacing="10" Margin="0,0,15,0">
+                    <TextBlock Text="Registrar Nueva Pieza" FontWeight="Bold" FontSize="16" Foreground="#4cc2ff"/>
+                    
+                    <TextBlock Text="Nombre de la Pieza (ej. Tornillo 3/8):"/>
+                    <TextBox x:Name="TxtNombrePieza" PlaceholderText="Nombre o referencia"/>
+                    
+                    <TextBlock Text="Categoría:"/>
+                    <TextBox x:Name="TxtCategoria" PlaceholderText="Tornillería, Filtros, etc."/>
+                    
+                    <TextBlock Text="Stock Actual:"/>
+                    <TextBox x:Name="TxtStock" PlaceholderText="0"/>
+
+                    <TextBlock Text="Stock Mínimo (Alerta):"/>
+                    <TextBox x:Name="TxtStockMinimo" PlaceholderText="0"/>
+
+                    <Button Content="Guardar Pieza" Click="OnGuardarPiezaClick" 
+                            Background="#007acc" Foreground="White" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Panel derecho: Tabla de Piezas -->
+                <Border Grid.Column="1" BorderBrush="#333" BorderThickness="1" CornerRadius="5" Padding="5">
+                    <DataGrid x:Name="GridPiezas"
+                            AutoGenerateColumns="True"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch"
+                            Background="#252526"
+                            Foreground="White"
+                            Margin="0, 10, 0, 0">
+                        <!-- Aquí se listarán las piezas cargadas desde la base de datos -->
+                    </DataGrid>
+                </Border>
+            </Grid>
+        </TabItem>
+
+        <!-- PESTAÑA 2: CONTROL DE COMBUSTIBLE -->
+        <TabItem Header="Control de Combustible">
+            <Grid ColumnDefinitions="300, *" RowDefinitions="*" Margin="10">
+                
+                <!-- Panel izquierdo: Formulario de Combustible -->
+                <StackPanel Grid.Column="0" Spacing="10" Margin="0,0,15,0">
+                    <TextBlock Text="Registro de Combustible" FontWeight="Bold" FontSize="16" Foreground="#4cc2ff"/>
+                    
+                    <TextBlock Text="Equipo / Vehículo / Maquinaria:"/>
+                    <TextBox x:Name="TxtEquipo" PlaceholderText="Ej. Montacargas 01"/>
+                    
+                    <TextBlock Text="Cantidad (Galones / Litros):"/>
+                    <TextBox x:Name="TxtCantidadCombustible" PlaceholderText="0.0"/>
+                    
+                    <TextBlock Text="Horómetro / Odómetro Actual:"/>
+                    <TextBox x:Name="TxtOdometro" PlaceholderText="Horas o Kilómetros"/>
+
+                    <Button Content="Registrar Carga" Click="OnRegistrarCombustibleClick" 
+                            Background="#28a745" Foreground="White" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Panel derecho: Tabla de Combustible -->
+                <Border Grid.Column="1" BorderBrush="#333" BorderThickness="1" CornerRadius="5" Padding="5">
+                    <DataGrid x:Name="GridCombustible"
+                            AutoGenerateColumns="True"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch"
+                            Background="#252526"
+                            Foreground="White"
+                            Margin="0, 10, 0, 0">
+                        <!-- Aquí se listarán las cargas de combustible -->
+                    </DataGrid>
+                </Border>
+            </Grid>
+        </TabItem>
+        
+    </TabControl>
+</Window>
